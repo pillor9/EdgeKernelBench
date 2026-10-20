@@ -1,0 +1,16 @@
+Source notices reproduced from the reviewed upstream revision.
+These notices apply to the upstream material they identify.
+
+Source: https://github.com/mlcommons/tiny/blob/4addd0fa08d216e20637637874e084895f289da4/benchmark/training/anomaly_detection/keras_model.py
+
+"""
+ @file   keras_model.py
+ @brief  Script for keras model definition
+ @author Toshiki Nakamura, Yuki Nikaido, and Yohei Kawaguchi (Hitachi Ltd.)
+ Copyright (C) 2020 Hitachi, Ltd. All right reserved.
+"""
+
+########################################################################
+# import python-library
+########################################################################
+# from import

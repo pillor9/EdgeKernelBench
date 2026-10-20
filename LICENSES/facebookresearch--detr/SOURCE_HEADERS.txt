@@ -1,0 +1,14 @@
+Source notices reproduced from the reviewed upstream revision.
+These notices apply to the upstream material they identify.
+
+Source: https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/transformer.py
+
+# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+"""
+DETR Transformer class.
+
+Copy-paste from torch.nn.Transformer with modifications:
+    * positional encodings are passed in MHattention
+    * extra LN at the end of encoder is removed
+    * decoder returns a stack of activations from all decoding layers
+"""

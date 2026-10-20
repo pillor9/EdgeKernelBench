@@ -1,0 +1,10 @@
+Source notices reproduced from the reviewed upstream revision.
+These notices apply to the upstream material they identify.
+
+Source: https://github.com/DingXiaoH/RepVGG/blob/eae7c5204001eaf195bbe2ee72fb6a37855cce33/repvgg.py
+
+# --------------------------------------------------------
+# RepVGG: Making VGG-style ConvNets Great Again (https://openaccess.thecvf.com/content/CVPR2021/papers/Ding_RepVGG_Making_VGG-Style_ConvNets_Great_Again_CVPR_2021_paper.pdf)
+# Github source: https://github.com/DingXiaoH/RepVGG
+# Licensed under The MIT License [see LICENSE for details]
+# --------------------------------------------------------

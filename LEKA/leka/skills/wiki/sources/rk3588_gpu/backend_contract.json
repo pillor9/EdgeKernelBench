@@ -1,0 +1,28 @@
+{
+  "schema_version": "leka.wiki_backend_contract.v1",
+  "backend": "rk3588_gpu",
+  "target": "opencl -device=mali",
+  "device_family": "Rockchip RK3588 with Arm Mali-G610 MC4",
+  "planning_limits": {
+    "max_threads_per_block": 1024,
+    "max_shared_memory_per_block_bytes": 32768,
+    "max_function_arguments": 128
+  },
+  "boundary": "Apply these conservative planning limits and query OpenCL device and kernel limits before selecting launch geometry. A TVM thread_warp_size field is not proof of OpenCL subgroup support.",
+  "runtime_queries": [
+    "OpenCL and OpenCL C versions",
+    "extensions and subgroup support",
+    "device and kernel workgroup limits",
+    "local-memory size and type",
+    "compiler and driver versions"
+  ],
+  "profiling": {
+    "default_deep_mode": "off",
+    "optional_window_modes": [
+      "devfreq",
+      "hwcpipe"
+    ],
+    "window_exact_bundle": false,
+    "boundary": "Window telemetry is device context and is not attributable to one candidate or PrimFunc."
+  }
+}

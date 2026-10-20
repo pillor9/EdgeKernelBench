@@ -1,0 +1,135 @@
+diff --git a/src/meta_schedule/postproc/verify_gpu_code.cc b/src/meta_schedule/postproc/verify_gpu_code.cc
+index 04a9cf2..62ba638 100644
+--- a/src/meta_schedule/postproc/verify_gpu_code.cc
++++ b/src/meta_schedule/postproc/verify_gpu_code.cc
+@@ -16,6 +16,8 @@
+  * specific language governing permissions and limitations
+  * under the License.
+  */
++// Modified for EdgeKernelBench: compiler failure handling for candidate evaluation.
++// Attribution and modification notice added 2026-10-06.
+ #include <tvm/ffi/reflection/registry.h>
+ #include <tvm/tir/transform.h>
+
+@@ -28,11 +30,13 @@
+  public:
+   static bool Check(const Stmt& stmt, int thread_warp_size) {
+     try {
+-      ICHECK(thread_warp_size > 0);
++      if (thread_warp_size <= 0) {
++        return false;
++      }
+       ThreadExtentChecker checker(thread_warp_size);
+       checker.VisitStmt(stmt);
+-      return true;
+-    } catch (const std::exception&) {
++      return checker.valid_;
++    } catch (...) {
+       return false;
+     }
+   }
+@@ -41,6 +45,9 @@
+   explicit ThreadExtentChecker(int thread_warp_size) : thread_warp_size_(thread_warp_size) {}
+
+   void VisitStmt_(const ForNode* loop) {
++    if (!valid_) {
++      return;
++    }
+     runtime::ThreadScope thread_scope = GetThreadScope(loop);
+     if (IsThreadIdx(thread_scope)) {
+       if (const int64_t* p_ext = GetLoopIntExtent(loop)) {
+@@ -62,13 +69,17 @@
+         }
+         return;
+       } else {
+-        throw dmlc::Error("Dynamic thread extent");
++        valid_ = false;
++        return;
+       }
+     }
+     StmtVisitor::VisitStmt_(loop);
+   }
+
+   void VisitStmt_(const BlockNode* block) {
++    if (!valid_) {
++      return;
++    }
+     int old_thread_idx_x = thread_idx_x;
+     if (block->annotations.count(attr::warp_execution)) {
+       thread_idx_x = thread_warp_size_;
+@@ -81,7 +92,9 @@
+         int64_t high = high_inclusive.value()->value;
+         int64_t thread_extent_product = thread_idx_x * thread_idx_y * thread_idx_z;
+         if (!(low <= thread_extent_product && thread_extent_product <= high)) {
+-          throw dmlc::Error("Thread extent");
++          valid_ = false;
++          thread_idx_x = old_thread_idx_x;
++          return;
+         }
+       }
+     }
+@@ -93,6 +106,7 @@
+   int64_t thread_idx_y = 1;
+   int64_t thread_idx_z = 1;
+   int thread_warp_size_ = -1;
++  bool valid_ = true;
+ };
+
+ }  // namespace tir
+diff --git a/src/support/parallel_for.cc b/src/support/parallel_for.cc
+index e909675..c1dd36c 100644
+--- a/src/support/parallel_for.cc
++++ b/src/support/parallel_for.cc
+@@ -16,6 +16,8 @@
+  * specific language governing permissions and limitations
+  * under the License.
+  */
++// Modified for EdgeKernelBench: compiler failure handling for candidate evaluation.
++// Attribution and modification notice added 2026-10-06.
+
+ /*!
+  * \file parallel_for.cc
+@@ -31,6 +33,25 @@
+
+ namespace tvm {
+ namespace support {
++
++namespace {
++
++class ThreadJoiner {
++ public:
++  explicit ThreadJoiner(std::vector<std::thread>* threads) : threads_(threads) {}
++  ~ThreadJoiner() {
++    for (std::thread& thread : *threads_) {
++      if (thread.joinable()) {
++        thread.join();
++      }
++    }
++  }
++
++ private:
++  std::vector<std::thread>* threads_;
++};
++
++}  // namespace
+
+ std::vector<std::vector<int>> rr_partitioner(int begin, int end, int step, int num_threads) {
+   int total_task_count = (end - begin) / step;
+@@ -106,6 +127,7 @@
+   std::atomic<int> counter{begin};
+   std::vector<std::future<void>> futures;
+   std::vector<std::thread> threads;
++  ThreadJoiner thread_joiner(&threads);
+   futures.reserve(num_threads - 1);
+   threads.reserve(num_threads - 1);
+   auto worker = [end, &counter, &f](int thread_id) -> void {
+@@ -122,9 +144,6 @@
+   try {
+     worker(0);
+   } catch (const std::exception& e) {
+-    for (auto&& thread : threads) {
+-      thread.join();
+-    }
+     LOG(FATAL) << "RuntimeError: parallel_for_dynamic error with " << e.what();
+   }
+   // Step 3. Join threads and check exceptions

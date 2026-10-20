@@ -1,0 +1,9 @@
+Source notices reproduced from the reviewed upstream revision.
+These notices apply to the upstream material they identify.
+
+Source: https://github.com/mlfoundations/open_clip/blob/7067b350050dc409bfdfdbb3f0cc6c9a1651c000/src/open_clip/model.py
+
+""" CLIP Model
+
+Adapted from https://github.com/openai/CLIP. Originally MIT License, Copyright (c) 2021 OpenAI.
+"""

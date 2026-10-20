@@ -1,0 +1,14 @@
+Source notices reproduced from the reviewed upstream revision.
+These notices apply to the upstream material they identify.
+
+Source: https://github.com/DingXiaoH/RepLKNet-pytorch/blob/b76808ac2c763eaed6af9d286c6163c9345b4d5f/replknet.py
+
+# Scaling Up Your Kernels to 31x31: Revisiting Large Kernel Design in CNNs (https://arxiv.org/abs/2203.06717)
+# Github source: https://github.com/DingXiaoH/RepLKNet-pytorch
+# Licensed under The MIT License [see LICENSE for details]
+# Based on ConvNeXt, timm, DINO and DeiT code bases
+# https://github.com/facebookresearch/ConvNeXt
+# https://github.com/rwightman/pytorch-image-models/tree/master/timm
+# https://github.com/facebookresearch/deit/
+# https://github.com/facebookresearch/dino
+# --------------------------------------------------------'

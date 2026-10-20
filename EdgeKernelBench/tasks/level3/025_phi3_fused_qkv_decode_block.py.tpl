@@ -1,0 +1,127 @@
+# EdgeKernelBench licensing
+# SPDX-License-Identifier: Apache-2.0
+# Scope and attribution: LICENSE_SCOPE.md and THIRD_PARTY_NOTICES.md.
+# End licensing notice
+
+"""Canonical EdgeKernelBench task: phi3_fused_qkv_decode_block.
+
+Workload parameters are supplied through a scenario profile."""
+from __future__ import annotations
+TASK_METADATA = {'task_id': 'ekb_l3_025_phi3_fused_qkv_decode_block',
+ 'level': 3,
+ 'name': 'phi3_fused_qkv_decode_block',
+ 'scenario_tags': ['mobile_personal'],
+ 'operator_tags': ['attention',
+                   'matrix_multiplication',
+                   'normalization',
+                   'activation',
+                   'reduction',
+                   'rotary_position',
+                   'tensor_transform',
+                   'type_conversion',
+                   'tensor_generation',
+                   'elementwise'],
+ 'semantic_references': [{'url': 'https://github.com/mlc-ai/mlc-llm/blob/2008fe8343e1f40ef89ee57b9287aebcf1b86c98/python/mlc_llm/model/phi3/phi3_model.py',
+                          'symbol': 'Phi3DecoderLayer'}],
+ 'summary': 'Single-token Phi-3-style decoder block with fused QKV, RoPE, GQA, and fused gate/up MLP.',
+ 'adaptation_notes': ['Scaled fp32 PyTorch semantic translation with explicit rolling K/V tensor inputs and '
+                      'outputs. Long-context RoPE variants, paged-cache mutation, tensor parallelism, and '
+                      'fused attention kernels are intentionally omitted.'],
+ 'model_families': ['Phi-3']}
+import math
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class RMSNorm(nn.Module):
+
+    def __init__(self, dim: int, eps: float=1e-06):
+        super().__init__()
+        self.weight = nn.Parameter(torch.ones(dim))
+        self.eps = eps
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        variance = x.pow(2).mean(dim=-1, keepdim=True)
+        return x * torch.rsqrt(variance + self.eps) * self.weight
+
+def rotate_half(x: torch.Tensor) -> torch.Tensor:
+    paired = x.reshape(*x.shape[:-1], x.shape[-1] // 2, 2)
+    rotated = torch.stack((-paired[..., 1], paired[..., 0]), dim=-1)
+    return rotated.reshape_as(x)
+
+def apply_rope(x: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor) -> torch.Tensor:
+    return x * cos + rotate_half(x) * sin
+
+def repeat_kv(x: torch.Tensor, num_q_heads: int, num_kv_heads: int) -> torch.Tensor:
+    groups = num_q_heads // num_kv_heads
+    batch, _, tokens, head_dim = x.shape
+    return x.reshape(batch, num_kv_heads, 1, tokens, head_dim).expand(batch, num_kv_heads, groups, tokens, head_dim).reshape(batch, num_q_heads, tokens, head_dim)
+
+class Model(nn.Module):
+
+    def __init__(self, dim: int, ffn_dim: int, num_q_heads: int, num_kv_heads: int, head_dim: int, cache_len: int, window: int):
+        super().__init__()
+        self.q_heads = num_q_heads
+        self.kv_heads = num_kv_heads
+        self.head_dim = head_dim
+        self.cache_len = cache_len
+        self.window = window
+        self.ffn_dim = ffn_dim
+        self.attn_norm = RMSNorm(dim)
+        kv_dim = num_kv_heads * head_dim
+        self.qkv_proj = nn.Linear(dim, dim + 2 * kv_dim, bias=False)
+        self.o_proj = nn.Linear(num_q_heads * head_dim, dim, bias=False)
+        self.ffn_norm = RMSNorm(dim)
+        self.gate_up_proj = nn.Linear(dim, 2 * ffn_dim, bias=False)
+        self.down_proj = nn.Linear(ffn_dim, dim, bias=False)
+
+    def forward(self, x: torch.Tensor, past_key: torch.Tensor, past_value: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor, mask: torch.Tensor):
+        normed = self.attn_norm(x)
+        qkv = self.qkv_proj(normed)
+        q_size = self.q_heads * self.head_dim
+        kv_size = self.kv_heads * self.head_dim
+        q, k, v = torch.split(qkv, (q_size, kv_size, kv_size), dim=-1)
+        batch = x.shape[0]
+        q = q.reshape(batch, 1, self.q_heads, self.head_dim).transpose(1, 2)
+        k = k.reshape(batch, 1, self.kv_heads, self.head_dim).transpose(1, 2)
+        v = v.reshape(batch, 1, self.kv_heads, self.head_dim).transpose(1, 2)
+        q = apply_rope(q, cos, sin)
+        k = apply_rope(k, cos, sin)
+        key_all = torch.cat((past_key, k), dim=2)
+        value_all = torch.cat((past_value, v), dim=2)
+        new_key = key_all[:, :, 1:, :]
+        new_value = value_all[:, :, 1:, :]
+        key_for_attention = key_all
+        value_for_attention = value_all
+        key_for_attention = repeat_kv(key_for_attention, self.q_heads, self.kv_heads)
+        value_for_attention = repeat_kv(value_for_attention, self.q_heads, self.kv_heads)
+        scores = torch.matmul(q, key_for_attention.transpose(-2, -1))
+        scores = scores * (1.0 / math.sqrt(self.head_dim))
+        scores = scores + mask
+        probabilities = F.softmax(scores, dim=-1)
+        context = torch.matmul(probabilities, value_for_attention)
+        context = context.transpose(1, 2).reshape(batch, 1, self.q_heads * self.head_dim)
+        hidden = x + self.o_proj(context)
+        ffn_input = self.ffn_norm(hidden)
+        gate, up = torch.split(self.gate_up_proj(ffn_input), self.ffn_dim, dim=-1)
+        hidden = hidden + self.down_proj(F.silu(gate) * up)
+        return (hidden, new_key, new_value)
+
+def get_init_inputs():
+    return [__EKB_INPUT_get_init_inputs_001_c001__, __EKB_INPUT_get_init_inputs_001_c002__, __EKB_INPUT_get_init_inputs_001_c003__, __EKB_INPUT_get_init_inputs_001_c004__, __EKB_INPUT_get_init_inputs_001_c005__, __EKB_INPUT_get_init_inputs_001_c006__, __EKB_INPUT_get_init_inputs_001_c007__]
+
+def get_inputs():
+    torch.manual_seed(__EKB_INPUT_get_inputs_001_c001__)
+    batch, dim = (__EKB_INPUT_get_inputs_001_c002__, __EKB_INPUT_get_inputs_001_c003__)
+    num_kv_heads, head_dim, cache_len = (__EKB_INPUT_get_inputs_001_c004__, __EKB_INPUT_get_inputs_001_c005__, __EKB_INPUT_get_inputs_001_c006__)
+    x = torch.randn(batch, __EKB_INPUT_get_inputs_001_c007__, dim, dtype=torch.float32)
+    past_key = torch.randn(batch, num_kv_heads, cache_len, head_dim, dtype=torch.float32)
+    past_value = torch.randn(batch, num_kv_heads, cache_len, head_dim, dtype=torch.float32)
+    position = torch.tensor([cache_len], dtype=torch.float32)
+    inv_freq = __EKB_INPUT_get_inputs_001_c008__ / __EKB_INPUT_get_inputs_001_c009__ ** (torch.arange(__EKB_INPUT_get_inputs_001_c010__, head_dim, __EKB_INPUT_get_inputs_001_c011__).float() / head_dim)
+    freqs = torch.outer(position, inv_freq)
+    angles = torch.stack((freqs, freqs), dim=-__EKB_INPUT_get_inputs_001_c012__).reshape(__EKB_INPUT_get_inputs_001_c013__, head_dim)
+    cos = torch.cos(angles).reshape(__EKB_INPUT_get_inputs_001_c014__, __EKB_INPUT_get_inputs_001_c015__, __EKB_INPUT_get_inputs_001_c016__, head_dim)
+    sin = torch.sin(angles).reshape(__EKB_INPUT_get_inputs_001_c017__, __EKB_INPUT_get_inputs_001_c018__, __EKB_INPUT_get_inputs_001_c019__, head_dim)
+    mask = torch.zeros(__EKB_INPUT_get_inputs_001_c020__, __EKB_INPUT_get_inputs_001_c021__, __EKB_INPUT_get_inputs_001_c022__, __EKB_INPUT_get_inputs_001_c023__, dtype=torch.float32)
+    return [x, past_key, past_value, cos, sin, mask]

@@ -1,0 +1,29 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+build/
+dist/
+node_modules/
+.DS_Store
+.env
+*.log
+*.pid
+*.so
+*.dylib
+*.o
+*.npz
+*.npy
+runs/
+generated/
+cache/
+
+# Local credentials and private connection settings
+.env.*
+*.pem
+*.key
+secrets/
+
+# Local optimization workspaces
+outputs/

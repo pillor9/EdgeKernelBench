@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "leka"
+version = "0.1.0"
+description = "Layered kernel optimization for edge devices"
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: Apache Software License"]
+requires-python = ">=3.11"
+dependencies = ["numpy==2.4.4", "torch==2.11.0"]
+
+[project.scripts]
+leka = "leka.__main__:main"
+
+[tool.setuptools]
+license-files = ["LICENSE", "NOTICE"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["leka*"]
+
+[tool.setuptools.package-data]
+leka = ["prompts/*.md", "skills/wiki/**/*.md", "skills/wiki/**/*.json", "skills/wiki/*.json", "runtime/*.sh"]
+
+[project.urls]
+Repository = "https://github.com/pillor9/EdgeKernelBench"

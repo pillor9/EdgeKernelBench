@@ -1,0 +1,1921 @@
+schema_version: 1
+scenario: mobile_personal
+description: Interactive and personal on-device inference workloads.
+case_count: 204
+tasks:
+  ekb_l1_001_abs:
+    parameters:
+      batch_size: 1
+      input_shape:
+        python_expr: (8, 256, 256)
+    input_constants:
+      get_inputs_001_c001: 2.0
+      get_inputs_001_c002: 1.0
+  ekb_l1_002_add:
+    parameters:
+      batch_size: 1
+      C_H_W:
+        python_expr: (3, 64, 64)
+    input_constants:
+      get_inputs_001_c001: 1
+      get_inputs_001_c002: 1
+      get_inputs_001_c003: 1
+  ekb_l1_005_argmax:
+    parameters:
+      batch_size: 1
+      dim1: 88
+      dim2: 120
+    input_constants:
+      get_init_inputs_001_c001: 1
+  ekb_l1_006_argmax_default_axis_example:
+    parameters:
+      batch_size: 1
+      dim1: 104
+      dim2: 144
+    input_constants: {}
+  ekb_l1_008_argmax_negative_axis_keepdims_example:
+    parameters:
+      batch_size: 1
+      dim1: 72
+      dim2: 104
+    input_constants: {}
+  ekb_l1_009_argmin:
+    parameters:
+      batch_size: 1
+      dim1: 88
+      dim2: 120
+      dim: 1
+    input_constants: {}
+  ekb_l1_010_argmin_default_axis_example:
+    parameters:
+      batch_size: 1
+      dim1: 104
+      dim2: 144
+    input_constants: {}
+  ekb_l1_012_argmin_negative_axis_keepdims_example:
+    parameters:
+      batch_size: 1
+      dim1: 72
+      dim2: 104
+    input_constants: {}
+  ekb_l1_014_attention_softmax_decode:
+    parameters:
+      batch_size: 1
+      num_heads: 6
+      query_len: 1
+      key_len: 97
+    input_constants: {}
+  ekb_l1_016_averagepool:
+    parameters:
+      batch_size: 1
+      channels: 40
+      height: 88
+      width: 120
+      kernel_size: 11
+    input_constants: {}
+  ekb_l1_017_averagepool_2d_ceil:
+    parameters:
+      batch_size: 1
+      channels: 48
+      height: 104
+      width: 144
+      kernel_size: 11
+    input_constants: {}
+  ekb_l1_018_averagepool_2d_strides:
+    parameters:
+      batch_size: 1
+      channels: 72
+      height: 56
+      width: 72
+      kernel_size: 11
+      stride: 3
+    input_constants: {}
+  ekb_l1_019_batchnormalization:
+    parameters:
+      batch_size: 1
+      features: 48
+      dim1: 104
+      dim2: 144
+    input_constants: {}
+  ekb_l1_020_batchnormalization_epsilon:
+    parameters:
+      batch_size: 1
+      features: 72
+      dim1: 56
+      dim2: 72
+      epsilon: 0.001
+    input_constants: {}
+  ekb_l1_021_batchnormalization_momentum:
+    parameters:
+      batch_size: 1
+      features: 80
+      dim1: 72
+      dim2: 104
+      momentum: 0.2
+    input_constants: {}
+  ekb_l1_022_cast:
+    parameters:
+      batch_size: 1
+      input_shape:
+        python_expr: (512, 256)
+    input_constants: {}
+  ekb_l1_024_ceil:
+    parameters:
+      batch_size: 1
+      dim1: 56
+      dim2: 72
+    input_constants: {}
+  ekb_l1_025_celu:
+    parameters:
+      batch_size: 1
+      dim: 784
+      alpha: 1.0
+    input_constants: {}
+  ekb_l1_027_clip:
+    parameters:
+      batch_size: 1
+      input_shape:
+        python_expr: (32, 128, 256)
+      min_val: -0.5
+      max_val: 0.5
+    input_constants: {}
+  ekb_l1_028_conv:
+    parameters:
+      batch_size: 1
+      in_channels: 72
+      out_channels: 104
+      height: 88
+      width: 120
+      kernel_size: 3
+      groups: 1
+      strides:
+      - 1
+      - 1
+      pads:
+      - 1
+      - 1
+      - 1
+      - 1
+      dilations:
+      - 1
+      - 1
+      auto_pad: NOTSET
+    input_constants: {}
+  ekb_l1_029_conv3d:
+    parameters:
+      batch_size: 1
+      in_channels: 24
+      out_channels: 48
+      depth: 6
+      height: 18
+      width: 22
+      kernel_size:
+        python_expr: (3, 3, 3)
+      stride:
+        python_expr: (1, 1, 1)
+      padding:
+        python_expr: (1, 1, 1)
+      dilation:
+        python_expr: (1, 1, 1)
+      groups: 1
+      bias: true
+    input_constants:
+      get_inputs_001_c001: 42
+  ekb_l1_032_conv_with_strides_padding:
+    parameters:
+      batch_size: 1
+      in_channels: 72
+      out_channels: 104
+      height: 104
+      width: 144
+      kernel_h: 3
+      kernel_w: 3
+    input_constants:
+      get_init_inputs_001_c001: 2
+      get_init_inputs_001_c002: 2
+      get_init_inputs_001_c003: 1
+      get_init_inputs_001_c004: 1
+      get_init_inputs_001_c005: 1
+      get_init_inputs_001_c006: 1
+      get_init_inputs_001_c007: 1
+      get_init_inputs_001_c008: 1
+      get_init_inputs_001_c009: 1
+      get_init_inputs_001_c010: 3
+      get_init_inputs_001_c011: 3
+  ekb_l1_033_convolutiondepthwise:
+    parameters:
+      batch_size: 1
+      in_channels: 80
+      out_channels: 112
+      height: 56
+      width: 72
+      kernel_size: 3
+    input_constants:
+      get_init_inputs_001_c001: 1
+      get_init_inputs_001_c002: 1
+  ekb_l1_034_convtranspose_2d_asymmetric_input_asymmetric_kernel:
+    parameters:
+      batch_size: 1
+      in_channels: 104
+      out_channels: 136
+      kernel_size:
+        python_expr: (3, 5)
+      height_in: 56
+      width_in: 72
+    input_constants: {}
+  ekb_l1_038_decode_linear_gemv:
+    parameters:
+      batch_size: 1
+      seq_len: 1
+      hidden_size: 384
+    input_constants: {}
+  ekb_l1_039_deconvolution_1d:
+    parameters:
+      batch_size: 1
+      in_channels: 48
+      out_channels: 80
+      kernel_size: 3
+      length: 144
+    input_constants: {}
+  ekb_l1_040_deconvolution_2d_asymmetric_input_asymmetric_kernel:
+    parameters:
+      batch_size: 1
+      in_channels: 72
+      out_channels: 88
+      kernel_size:
+        python_expr: (3, 5)
+      height_in: 56
+      width_in: 72
+    input_constants: {}
+  ekb_l1_041_deconvolutiondepthwise_2d_kernel:
+    parameters:
+      batch_size: 1
+      in_channels: 104
+      out_channels: 104
+      height: 72
+      width: 104
+      kernel_size: 5
+      stride: 1
+      padding: 2
+      output_padding: 0
+      dilation: 1
+    input_constants: {}
+  ekb_l1_042_deconvolutiondepthwise_2d_stride:
+    parameters:
+      batch_size: 1
+      in_channels: 40
+      out_channels: 40
+      height: 88
+      width: 120
+      kernel_size: 3
+      stride: 2
+      padding: 1
+      output_padding: 1
+    input_constants: {}
+  ekb_l1_043_dense_convolution_1d:
+    parameters:
+      batch_size: 1
+      in_channels: 104
+      out_channels: 136
+      kernel_size: 3
+      length: 48
+    input_constants: {}
+  ekb_l1_044_dense_convolution_2d:
+    parameters:
+      batch_size: 1
+      in_channels: 40
+      out_channels: 56
+      height: 104
+      width: 144
+      kernel_size: 3
+    input_constants:
+      get_init_inputs_001_c001: 1
+      get_init_inputs_001_c002: 1
+  ekb_l1_045_dense_convolution_2d_asymmetric_input_square_kernel:
+    parameters:
+      batch_size: 1
+      height: 56
+      width: 72
+      in_channels: 48
+      out_channels: 72
+      kernel_size: 3
+    input_constants: {}
+  ekb_l1_046_dense_convolution_2d_kernel:
+    parameters:
+      batch_size: 1
+      in_channels: 72
+      out_channels: 104
+      height: 72
+      width: 104
+    input_constants: {}
+  ekb_l1_047_depthtospace:
+    parameters:
+      batch_size: 1
+      block_size: 4
+      out_channels: 136
+      out_height: 104
+      out_width: 144
+      in_channels:
+        python_expr: out_channels * block_size ** 2
+      in_height:
+        python_expr: out_height // block_size
+      in_width:
+        python_expr: out_width // block_size
+      input_shape:
+        python_expr: (in_channels, in_height, in_width)
+    input_constants: {}
+  ekb_l1_049_div:
+    parameters:
+      batch_size: 1
+      C_H_W:
+        python_expr: (3, 64, 64)
+    input_constants:
+      get_inputs_001_c001: 0.5
+      get_inputs_001_c002: 1
+      get_inputs_001_c003: 1
+      get_inputs_001_c004: 1
+  ekb_l1_050_einsum:
+    parameters:
+      M: 192
+      K: 864
+      N: 432
+      equation: ij,jk->ik
+    input_constants: {}
+  ekb_l1_051_einsum_diagonal:
+    parameters:
+      N: 472
+    input_constants: {}
+  ekb_l1_052_einsum_elementwise:
+    parameters:
+      M: 72
+      N: 520
+      equation: ij,ij->ij
+    input_constants: {}
+  ekb_l1_053_einsum_sum_all:
+    parameters:
+      M: 104
+      N: 552
+      equation: ij->
+    input_constants: {}
+  ekb_l1_054_einsum_transpose:
+    parameters:
+      M: 120
+      N: 352
+      equation: ij->ji
+    input_constants: {}
+  ekb_l1_055_elu:
+    parameters:
+      dim1: 104
+      dim2: 144
+      dim3: 944
+      alpha: 0.1
+    input_constants: {}
+  ekb_l1_056_embedding:
+    parameters:
+      batch_size: 1
+      seq_len: 512
+      vocab_size: 32000
+      hidden_size: 2048
+    input_constants:
+      get_inputs_001_c001: 0
+  ekb_l1_057_fake_quant_dequant_matmul:
+    parameters:
+      batch_size: 1
+      in_features: 2048
+      out_features: 5632
+    input_constants:
+      get_inputs_001_c001: 8
+      get_inputs_001_c002: 8
+      get_inputs_001_c003: 1
+      get_inputs_001_c004: 1
+  ekb_l1_058_gather:
+    parameters:
+      B_C_D:
+        python_expr: (8, 64, 64)
+      axis: 1
+    input_constants:
+      get_inputs_001_c001: 0
+      get_inputs_001_c002: 3
+  ekb_l1_059_gatherelements:
+    parameters:
+      B_C_D:
+        python_expr: (16, 64, 64)
+      axis: 1
+    input_constants:
+      get_inputs_001_c001: 0
+  ekb_l1_061_gemm:
+    parameters:
+      batch_size: 1
+      in_features: 784
+      out_features: 392
+      alpha: 1.0
+      beta: 1.0
+      with_bias: true
+    input_constants: {}
+  ekb_l1_062_gemm_alpha:
+    parameters:
+      M: 168
+      K: 864
+      N: 432
+      alpha: 0.5
+      beta: 1.0
+      transA: 0
+      transB: 0
+    input_constants:
+      get_inputs_001_c001: 1
+  ekb_l1_063_gemm_beta:
+    parameters:
+      M: 192
+      K: 944
+      N: 472
+      alpha: 1
+      beta: 0.5
+      transA: 0
+      transB: 0
+    input_constants:
+      get_inputs_001_c001: 1
+  ekb_l1_064_gemm_no_bias:
+    parameters:
+      M: 48
+      K: 1032
+      N: 520
+      alpha: 1.0
+      transA: 0
+      transB: 0
+    input_constants: {}
+  ekb_l1_065_gemm_scalar_bias:
+    parameters:
+      batch_size: 1
+      in_features: 1104
+      out_features: 552
+      alpha: 1.0
+      beta: 1.0
+      with_bias: true
+    input_constants: {}
+  ekb_l1_066_gemm_transposed:
+    parameters:
+      batch_size: 1
+      in_features: 704
+      out_features: 352
+      alpha: 1.5
+    input_constants: {}
+  ekb_l1_067_gemv_decode:
+    parameters:
+      batch_size: 1
+      in_features: 2048
+      out_features: 5632
+    input_constants: {}
+  ekb_l1_068_globalaveragepool:
+    parameters:
+      batch_size: 1
+      channels: 80
+      height: 72
+      width: 104
+    input_constants: {}
+  ekb_l1_069_globalaveragepool_2d:
+    parameters:
+      batch_size: 1
+      channels: 104
+      height: 88
+      width: 120
+    input_constants: {}
+  ekb_l1_070_globalaveragepool_2d_single_channel:
+    parameters:
+      batch_size: 1
+      channels: 40
+      height: 104
+      width: 144
+    input_constants: {}
+  ekb_l1_071_globalaveragepool_3d:
+    parameters:
+      batch_size: 1
+      channels: 48
+      depth: 12
+      height: 56
+      width: 72
+    input_constants: {}
+  ekb_l1_073_group_convolution_2d:
+    parameters:
+      batch_size: 1
+      in_channels: 80
+      out_channels: 104
+      height: 88
+      width: 120
+      kernel_size: 3
+      groups: 4
+    input_constants:
+      get_init_inputs_001_c001: 1
+      get_init_inputs_001_c002: 1
+  ekb_l1_074_group_convolution_2d_kernel:
+    parameters:
+      batch_size: 1
+      batch_size__2: 1
+      in_channels: 96
+      out_channels: 132
+      height: 104
+      width: 144
+      kernel_size: 5
+      groups: 12
+    input_constants:
+      get_inputs_001_c001: 24
+      get_inputs_001_c002: 32
+      get_inputs_001_c003: 32
+      get_init_inputs_002_c001: 1
+      get_init_inputs_002_c002: 2
+  ekb_l1_075_hardsigmoid:
+    parameters:
+      batch_size: 1
+      dim: 1032
+    input_constants: {}
+  ekb_l1_076_instancenormalization:
+    parameters:
+      batch_size: 1
+      features: 104
+      dim1: 88
+      dim2: 120
+    input_constants: {}
+  ekb_l1_077_instancenormalization_1d:
+    parameters:
+      batch_size: 1
+      num_features: 40
+      length: 48
+      eps: 1.0e-05
+      affine: false
+    input_constants: {}
+  ekb_l1_078_instancenormalization_3d:
+    parameters:
+      batch_size: 1
+      num_features: 48
+      depth: 8
+      height: 56
+      width: 72
+      eps: 1.0e-05
+      affine: false
+    input_constants: {}
+  ekb_l1_079_kv_cache_append:
+    parameters:
+      batch_size: 1
+      num_kv_heads: 2
+      cache_len: 96
+      seq_len: 1
+      head_dim: 64
+    input_constants: {}
+  ekb_l1_080_large_depthwise_5x5:
+    parameters:
+      batch_size: 1
+      channels: 32
+      height: 540
+      width: 960
+      kernel_size: 5
+    input_constants: {}
+  ekb_l1_081_layernorm:
+    parameters:
+      batch_size: 1
+      features: 72
+      dim1: 72
+      dim2: 104
+    input_constants: {}
+  ekb_l1_082_layernorm_1d:
+    parameters:
+      batch_size: 1
+      seq_len: 120
+      features: 80
+      eps: 1.0e-05
+      elementwise_affine: true
+    input_constants: {}
+  ekb_l1_085_logsoftmax:
+    parameters:
+      batch_size: 1
+      dim: 1104
+    input_constants: {}
+  ekb_l1_087_logsoftmax_axis_1:
+    parameters:
+      dim0: 1
+      dim1: 104
+      dim2: 144
+    input_constants:
+      get_init_inputs_001_c001: 1
+  ekb_l1_088_logsoftmax_axis_2:
+    parameters:
+      dim0: 1
+      dim1: 56
+      dim2: 72
+    input_constants:
+      get_init_inputs_001_c001: 2
+  ekb_l1_090_min:
+    parameters:
+      batch_size: 1
+      dim1: 56
+      dim2: 72
+    input_constants: {}
+  ekb_l1_091_mod:
+    parameters:
+      dim1: 72
+      dim2: 104
+      dim3: 784
+      fmod: 0
+    input_constants:
+      get_inputs_001_c001: 8.0
+      get_inputs_001_c002: 1.0
+      get_inputs_001_c003: 3.0
+  ekb_l1_092_mul:
+    parameters:
+      dim1: 88
+      dim2: 120
+      dim3: 864
+    input_constants: {}
+  ekb_l1_093_mul_bcast:
+    parameters:
+      batch_size: 1
+      dim1: 104
+      dim2: 144
+    input_constants: {}
+  ekb_l1_096_onehot:
+    parameters:
+      batch_size: 1
+      dim1: 104
+      dim2: 144
+      depth: 12
+    input_constants:
+      get_inputs_001_c001: 0
+  ekb_l1_098_pixel_shuffle_x3:
+    parameters:
+      batch_size: 1
+      channels: 27
+      height: 360
+      width: 640
+      upscale_factor: 3
+    input_constants: {}
+  ekb_l1_099_pow:
+    parameters:
+      dim1: 56
+      dim2: 72
+      dim3: 1032
+    input_constants:
+      get_inputs_001_c001: 42
+      get_inputs_001_c002: 10.999
+      get_inputs_001_c003: 0.001
+      get_inputs_001_c004: 1.999
+      get_inputs_001_c005: 0.001
+  ekb_l1_101_pv_decode_context:
+    parameters:
+      batch_size: 1
+      num_heads: 6
+      query_len: 1
+      key_len: 97
+      head_dim: 64
+    input_constants:
+      get_inputs_001_c001: 1
+  ekb_l1_103_qk_decode_scores:
+    parameters:
+      batch_size: 1
+      num_heads: 6
+      query_len: 1
+      key_len: 97
+      head_dim: 64
+    input_constants: {}
+  ekb_l1_106_reshape:
+    parameters:
+      batch_size: 1
+      input_shape:
+        python_expr: (8, 64, 64)
+      target_shape:
+        python_expr: (batch_size, -1)
+    input_constants: {}
+  ekb_l1_107_residual_add_decode:
+    parameters:
+      batch_size: 1
+      seq_len: 1
+      hidden_size: 384
+    input_constants: {}
+  ekb_l1_110_rmsnorm_decode:
+    parameters:
+      batch_size: 1
+      seq_len: 1
+      hidden_size: 384
+    input_constants: {}
+  ekb_l1_111_rmsnorm_decomposed:
+    parameters:
+      batch_size: 1
+      seq_len: 512
+      hidden_size: 2048
+    input_constants:
+      get_init_inputs_001_c001: 1.0e-06
+  ekb_l1_113_rope_decode:
+    parameters:
+      batch_size: 1
+      num_heads: 6
+      seq_len: 1
+      head_dim: 64
+      decode_position: 96
+    input_constants:
+      get_inputs_001_c001: 1.0
+      get_inputs_001_c002: 10000.0
+      get_inputs_001_c003: 0
+      get_inputs_001_c004: 2
+      get_inputs_001_c005: 1
+      get_inputs_001_c006: 1
+      get_inputs_001_c007: 1
+      get_inputs_001_c008: 1
+      get_inputs_001_c009: 1
+  ekb_l1_115_rotary_chain:
+    parameters:
+      batch_size: 1
+      num_heads: 32
+      seq_len: 512
+      head_dim: 64
+    input_constants:
+      get_init_inputs_001_c001: 1
+  ekb_l1_117_se_squeeze_path:
+    parameters:
+      batch_size: 1
+      input_channels: 480
+      squeeze_channels: 120
+      height: 14
+      width: 14
+    input_constants: {}
+  ekb_l1_119_softmax:
+    parameters:
+      batch_size: 1
+      dim: 1104
+    input_constants: {}
+  ekb_l1_120_softplus_2d:
+    parameters:
+      batch_size: 1
+      dim: 704
+    input_constants: {}
+  ekb_l1_121_softplus_3d:
+    parameters:
+      batch_size: 1
+      dim1: 72
+      dim2: 104
+    input_constants: {}
+  ekb_l1_124_sub:
+    parameters:
+      dim1: 72
+      dim2: 104
+      dim3: 1104
+    input_constants: {}
+  ekb_l1_125_swiglu_decode_elementwise:
+    parameters:
+      batch_size: 1
+      seq_len: 1
+      intermediate_size: 1024
+    input_constants: {}
+  ekb_l1_128_vocab_softmax:
+    parameters:
+      batch_size: 1
+      vocab_size: 32000
+    input_constants: {}
+  ekb_l2_004_attention_decomposed:
+    parameters:
+      batch_size: 1
+      heads: 4
+      seq_len: 104
+      head_dim: 176
+    input_constants: {}
+  ekb_l2_006_basicblock_residual:
+    parameters:
+      batch_size: 1
+      channels: 72
+      height: 56
+      width: 72
+    input_constants: {}
+  ekb_l2_008_bifpn_fusion:
+    parameters:
+      batch_size: 1
+      channels: 48
+      height: 40
+      width: 40
+    input_constants: {}
+  ekb_l2_009_bmm_instancenorm_add_mul:
+    parameters:
+      batch_size: 1
+      in_features: 768
+      out_features: 768
+    input_constants: {}
+  ekb_l2_010_bmm_instancenorm_add_mul_variant_2:
+    parameters:
+      batch_size: 1
+      in_features: 944
+      out_features: 472
+    input_constants: {}
+  ekb_l2_011_bottleneck_residual:
+    parameters:
+      batch_size: 1
+      channels: 80
+      planes:
+        python_expr: channels // 4
+      height: 72
+      width: 104
+    input_constants: {}
+  ekb_l2_020_clip_image_text_head:
+    parameters:
+      batch_size: 1
+      channels: 40
+      dim: 704
+      out_dim: 352
+      height: 56
+      width: 72
+      seq_len: 104
+    input_constants: {}
+  ekb_l2_021_conformer_conv:
+    parameters:
+      batch_size: 1
+      tokens: 96
+      dim: 192
+    input_constants: {}
+  ekb_l2_022_conv2d_activation_batchnorm:
+    parameters:
+      batch_size: 1
+      in_channels: 72
+      out_channels: 88
+      height: 56
+      width: 72
+      kernel_size: 3
+    input_constants: {}
+  ekb_l2_023_conv2d_add_scale_sigmoid_groupnorm:
+    parameters:
+      batch_size: 1
+      in_channels: 104
+      out_channels: 136
+      height: 56
+      width: 72
+      kernel_size: 3
+      num_groups: 8
+      bias_shape:
+        python_expr: (out_channels, 1, 1)
+      scale_shape:
+        python_expr: (out_channels, 1, 1)
+    input_constants: {}
+  ekb_l2_024_conv2d_avgpool_sigmoid_sum:
+    parameters:
+      batch_size: 1
+      in_channels: 40
+      out_channels: 56
+      height: 104
+      width: 144
+      kernel_size: 3
+      pool_kernel_size: 4
+    input_constants: {}
+  ekb_l2_025_conv2d_avgpool_sigmoid_sum_variant_2:
+    parameters:
+      batch_size: 1
+      in_channels: 48
+      out_channels: 72
+      height: 56
+      width: 72
+      kernel_size: 3
+      pool_kernel_size: 4
+    input_constants: {}
+  ekb_l2_026_conv2d_batchnorm_scaling:
+    parameters:
+      batch_size: 1
+      in_channels: 40
+      out_channels: 72
+      height: 56
+      width: 72
+      kernel_size: 3
+      scaling_factor: 2.0
+    input_constants: {}
+  ekb_l2_027_conv2d_divide_leakyrelu:
+    parameters:
+      batch_size: 1
+      in_channels: 104
+      out_channels: 136
+      height: 104
+      width: 144
+      kernel_size: 3
+      divisor: 2
+    input_constants: {}
+  ekb_l2_028_conv2d_gelu_globalavgpool:
+    parameters:
+      batch_size: 1
+      in_channels: 72
+      out_channels: 104
+      height: 72
+      width: 104
+      kernel_size: 3
+    input_constants: {}
+  ekb_l2_029_conv2d_groupnorm_scale_maxpool_clamp:
+    parameters:
+      batch_size: 1
+      in_channels: 72
+      out_channels: 112
+      height: 88
+      width: 120
+      kernel_size: 3
+      num_groups: 16
+      scale_shape:
+        python_expr: (out_channels, 1, 1)
+      maxpool_kernel_size: 4
+      clamp_min: 0.0
+      clamp_max: 1.0
+    input_constants: {}
+  ekb_l2_032_conv2d_hardswish_relu:
+    parameters:
+      batch_size: 1
+      in_channels: 80
+      out_channels: 104
+      height: 88
+      width: 120
+      kernel_size: 3
+    input_constants: {}
+  ekb_l2_033_conv2d_instancenorm_divide:
+    parameters:
+      batch_size: 1
+      in_channels: 72
+      out_channels: 104
+      height: 88
+      width: 120
+      kernel_size: 3
+      divide_by: 2.0
+    input_constants: {}
+  ekb_l2_034_conv2d_min_add_multiply:
+    parameters:
+      batch_size: 1
+      in_channels: 48
+      out_channels: 72
+      height: 88
+      width: 120
+      kernel_size: 3
+      constant_value: 0.5
+      bias_shape:
+        python_expr: (out_channels, 1, 1)
+      scaling_factor: 2.0
+    input_constants: {}
+  ekb_l2_035_conv2d_min_tanh_tanh:
+    parameters:
+      batch_size: 1
+      in_channels: 40
+      out_channels: 72
+      height: 72
+      width: 104
+      kernel_size: 3
+    input_constants: {}
+  ekb_l2_036_conv2d_mish_mish:
+    parameters:
+      batch_size: 1
+      in_channels: 48
+      out_channels: 80
+      height: 104
+      width: 144
+      kernel_size: 3
+    input_constants: {}
+  ekb_l2_037_conv2d_multiply_leakyrelu_gelu:
+    parameters:
+      batch_size: 1
+      in_channels: 80
+      out_channels: 104
+      height: 72
+      width: 104
+      kernel_size: 3
+      multiplier_shape:
+        python_expr: (out_channels, 1, 1)
+    input_constants: {}
+  ekb_l2_038_conv2d_relu_biasadd:
+    parameters:
+      batch_size: 1
+      in_channels: 80
+      out_channels: 104
+      height: 104
+      width: 144
+      kernel_size: 3
+      bias_shape:
+        python_expr: (out_channels, 1, 1)
+    input_constants: {}
+  ekb_l2_039_conv2d_relu_hardswish:
+    parameters:
+      batch_size: 1
+      in_channels: 104
+      out_channels: 136
+      height: 88
+      width: 120
+      kernel_size: 3
+    input_constants: {}
+  ekb_l2_040_conv2d_scaling_min:
+    parameters:
+      batch_size: 1
+      in_channels: 72
+      out_channels: 104
+      height: 104
+      width: 144
+      kernel_size: 3
+      scale_factor: 2.0
+    input_constants: {}
+  ekb_l2_041_conv2d_subtract_hardswish_maxpool_mish:
+    parameters:
+      batch_size: 1
+      in_channels: 80
+      out_channels: 112
+      height: 56
+      width: 72
+      kernel_size: 3
+      subtract_value: 0.5
+      pool_kernel_size: 2
+    input_constants: {}
+  ekb_l2_042_conv2d_subtract_hardswish_maxpool_mish_variant_2:
+    parameters:
+      batch_size: 1
+      in_channels: 104
+      out_channels: 120
+      height: 72
+      width: 104
+      kernel_size: 3
+      subtract_value: 0.5
+      pool_kernel_size: 2
+    input_constants: {}
+  ekb_l2_043_conv2d_subtract_subtract_mish:
+    parameters:
+      batch_size: 1
+      in_channels: 80
+      out_channels: 112
+      height: 104
+      width: 144
+      kernel_size: 3
+      subtract_value_1: 0.5
+      subtract_value_2: 0.2
+    input_constants: {}
+  ekb_l2_044_conv2d_subtract_tanh_subtract_avgpool:
+    parameters:
+      batch_size: 1
+      in_channels: 40
+      out_channels: 72
+      height: 88
+      width: 120
+      kernel_size: 3
+      subtract1_value: 0.5
+      subtract2_value: 0.2
+      kernel_size_pool: 2
+    input_constants: {}
+  ekb_l2_045_conv2d_tanh_scaling_biasadd_max:
+    parameters:
+      batch_size: 1
+      in_channels: 48
+      out_channels: 72
+      height: 72
+      width: 104
+      kernel_size: 3
+      scaling_factor: 2.0
+      bias_shape:
+        python_expr: (out_channels, 1, 1)
+      pool_kernel_size: 4
+    input_constants: {}
+  ekb_l2_051_conv_bn_relu_unit:
+    parameters:
+      batch_size: 1
+      in_channels: 48
+      out_channels: 72
+      height: 104
+      width: 144
+    input_constants: {}
+  ekb_l2_053_conv_pixelshuffle_prelu:
+    parameters:
+      batch_size: 1
+      channels: 48
+      out_channels: 72
+      height: 72
+      width: 104
+    input_constants: {}
+  ekb_l2_054_convnext_cnblock:
+    parameters:
+      batch_size: 1
+      channels: 48
+      height: 48
+      width: 48
+    input_constants: {}
+  ekb_l2_055_convtranspose2d_batchnorm_tanh_maxpool_groupnorm:
+    parameters:
+      batch_size: 1
+      in_channels: 72
+      out_channels: 88
+      height: 104
+      width: 144
+      kernel_size: 5
+      stride: 1
+      padding: 1
+      groups: 8
+      num_groups: 8
+    input_constants: {}
+  ekb_l2_056_convtranspose2d_biasadd_clamp_scaling_clamp_divide:
+    parameters:
+      batch_size: 1
+      in_channels: 40
+      out_channels: 56
+      height: 88
+      width: 120
+      kernel_size: 3
+      stride: 2
+      padding: 1
+      output_padding: 1
+      bias_shape:
+        python_expr: (out_channels, 1, 1)
+      scaling_factor: 2.0
+    input_constants: {}
+  ekb_l2_057_convtranspose2d_gelu_groupnorm:
+    parameters:
+      batch_size: 1
+      in_channels: 104
+      out_channels: 136
+      height: 72
+      width: 104
+      kernel_size: 3
+      stride: 1
+      groups: 8
+      num_groups: 8
+    input_constants: {}
+  ekb_l2_058_convtranspose2d_maxpool_hardtanh_mean_tanh:
+    parameters:
+      batch_size: 1
+      in_channels: 48
+      out_channels: 80
+      height: 88
+      width: 120
+      kernel_size: 3
+      stride: 1
+      padding: 1
+      maxpool_kernel_size: 2
+      maxpool_stride: 2
+      hardtanh_min: -1
+      hardtanh_max: 1
+    input_constants: {}
+  ekb_l2_059_convtranspose2d_mish_add_hardtanh_scaling:
+    parameters:
+      batch_size: 1
+      in_channels: 80
+      out_channels: 104
+      height: 56
+      width: 72
+      kernel_size: 3
+      stride: 2
+      padding: 1
+      output_padding: 1
+      add_value: 0.5
+      scale: 2
+    input_constants: {}
+  ekb_l2_060_convtranspose_generator:
+    parameters:
+      batch_size: 1
+      channels: 48
+      out_channels: 24
+      height: 24
+      width: 24
+    input_constants: {}
+  ekb_l2_061_cross_attention:
+    parameters:
+      batch_size: 1
+      tokens: 64
+      context_tokens: 48
+      dim: 192
+      context_dim: 192
+      heads: 6
+    input_constants: {}
+  ekb_l2_063_decode_norm_lm_head:
+    parameters:
+      batch_size: 1
+      seq_len: 1
+      dim: 384
+      vocab_size: 8192
+    input_constants:
+      get_inputs_001_c001: 0
+  ekb_l2_064_decode_norm_qkv_rope:
+    parameters:
+      batch_size: 1
+      dim: 384
+      num_q_heads: 6
+      num_kv_heads: 2
+      head_dim: 64
+      position: 96
+    input_constants:
+      get_inputs_001_c001: 0
+      get_inputs_001_c002: 1
+      get_inputs_001_c003: 1.0
+      get_inputs_001_c004: 10000.0
+      get_inputs_001_c005: 0
+      get_inputs_001_c006: 2
+      get_inputs_001_c007: 1
+      get_inputs_001_c008: 1
+      get_inputs_001_c009: 1
+      get_inputs_001_c010: 1
+  ekb_l2_065_decode_norm_swiglu_residual:
+    parameters:
+      batch_size: 1
+      seq_len: 1
+      dim: 384
+      ffn_dim: 1024
+    input_constants:
+      get_inputs_001_c001: 0
+  ekb_l2_067_dense_moe:
+    parameters:
+      batch_size: 1
+      tokens: 80
+      dim: 192
+      hidden: 384
+    input_constants: {}
+  ekb_l2_068_depthwise_pointwise_bn_act:
+    parameters:
+      batch_size: 1
+      channels: 104
+      out_channels: 120
+      height: 104
+      width: 144
+    input_constants: {}
+  ekb_l2_072_dilated_residual:
+    parameters:
+      batch_size: 1
+      channels: 48
+      height: 48
+      width: 48
+    input_constants: {}
+  ekb_l2_073_ds_cnn_unit:
+    parameters:
+      batch_size: 1
+      channels: 80
+      out_channels: 104
+      height: 72
+      width: 104
+    input_constants: {}
+  ekb_l2_075_dual_tower_cosine_head:
+    parameters:
+      batch_size: 1
+      seq_len: 72
+      dim: 704
+    input_constants: {}
+  ekb_l2_077_efficientformer_poolmixer:
+    parameters:
+      batch_size: 1
+      channels: 48
+      hidden: 144
+      height: 48
+      width: 48
+    input_constants: {}
+  ekb_l2_078_espcn_dscnn_parallel:
+    parameters:
+      batch_size: 1
+      channels: 48
+      mid_channels: 40
+      out_channels: 72
+      out_dim: 392
+      height: 72
+      width: 104
+    input_constants:
+      get_inputs_001_c001: 1
+  ekb_l2_079_espcn_feature_chain:
+    parameters:
+      batch_size: 1
+      channels: 72
+      mid_channels: 48
+      out_channels: 104
+      height: 88
+      width: 120
+    input_constants: {}
+  ekb_l2_080_fake_quant_dequant_gemm:
+    parameters:
+      batch_size: 1
+      seq_len: 144
+      dim: 864
+      out_dim: 432
+    input_constants: {}
+  ekb_l2_085_fpn_unit:
+    parameters:
+      batch_size: 1
+      low_channels: 72
+      high_channels: 88
+      fpn_channels: 48
+      height: 88
+      width: 120
+    input_constants:
+      get_inputs_001_c001: 2
+      get_inputs_001_c002: 2
+  ekb_l2_086_fused_mbconv:
+    parameters:
+      batch_size: 1
+      channels: 104
+      hidden_dim: 1088
+      out_channels: 120
+      height: 72
+      width: 104
+    input_constants: {}
+  ekb_l2_088_geglu_ffn:
+    parameters:
+      batch_size: 1
+      tokens: 96
+      dim: 192
+      hidden_dim: 768
+    input_constants: {}
+  ekb_l2_091_ghost_module:
+    parameters:
+      batch_size: 1
+      channels: 40
+      out_channels: 72
+      height: 88
+      width: 120
+    input_constants: {}
+  ekb_l2_092_ghostnet_embedding_variant:
+    parameters:
+      batch_size: 1
+      channels: 40
+      dim: 1104
+      out_channels: 72
+      out_dim: 552
+      height: 72
+      width: 104
+      seq_len: 48
+    input_constants: {}
+  ekb_l2_093_globalavgpool_linear_sigmoid_head:
+    parameters:
+      batch_size: 1
+      channels: 104
+      num_classes: 52
+      height: 56
+      width: 72
+    input_constants: {}
+  ekb_l2_094_gn_silu_resblock:
+    parameters:
+      batch_size: 1
+      channels: 48
+      groups: 8
+      height: 48
+      width: 48
+    input_constants: {}
+  ekb_l2_095_gqa_attention_static_kv:
+    parameters:
+      batch_size: 1
+      seq_len: 48
+      dim: 1032
+      heads: 8
+      head_dim: 129
+    input_constants: {}
+  ekb_l2_096_gqa_depthwise_conv_parallel:
+    parameters:
+      batch_size: 1
+      channels: 72
+      dim: 864
+      heads: 4
+      head_dim: 216
+      out_dim: 432
+      height: 88
+      width: 120
+      seq_len: 144
+    input_constants: {}
+  ekb_l2_100_imdn_block:
+    parameters:
+      batch_size: 1
+      channels: 48
+      height: 48
+      width: 48
+    input_constants: {}
+  ekb_l2_101_instancenorm_residual:
+    parameters:
+      batch_size: 1
+      channels: 48
+      height: 40
+      width: 40
+    input_constants: {}
+  ekb_l2_102_inverted_residual_no_se:
+    parameters:
+      batch_size: 1
+      channels: 40
+      hidden_dim: 704
+      height: 56
+      width: 72
+    input_constants: {}
+  ekb_l2_103_layernorm_mha_residual:
+    parameters:
+      batch_size: 1
+      seq_len: 120
+      dim: 784
+      heads: 4
+    input_constants: {}
+  ekb_l2_104_layerscale_residual:
+    parameters:
+      batch_size: 1
+      tokens: 96
+      dim: 192
+    input_constants: {}
+  ekb_l2_105_linear_gelu_linear_mlp:
+    parameters:
+      batch_size: 1
+      seq_len: 72
+      dim: 1104
+      hidden_dim: 704
+    input_constants: {}
+  ekb_l2_106_llama_rmsnorm_qkv:
+    parameters:
+      batch_size: 1
+      seq_len: 168
+      dim: 864
+      heads: 4
+      head_dim: 216
+    input_constants: {}
+  ekb_l2_107_logits_head_rmsnorm_linear_vocab:
+    parameters:
+      batch_size: 1
+      seq_len: 120
+      dim: 784
+      vocab_size: 2257
+    input_constants: {}
+  ekb_l2_108_lora_decode_linear:
+    parameters:
+      batch_size: 1
+      seq_len: 1
+      dim: 384
+      rank: 8
+    input_constants:
+      get_inputs_001_c001: 0
+  ekb_l2_109_lora_linear:
+    parameters:
+      batch_size: 1
+      tokens: 80
+      dim: 192
+      out: 256
+      rank: 8
+      scale: 0.125
+    input_constants: {}
+  ekb_l2_112_mha:
+    parameters:
+      batch_size: 1
+      tokens: 96
+      dim: 192
+      heads: 6
+    input_constants: {}
+  ekb_l2_113_mlp_mixer_block:
+    parameters:
+      batch_size: 1
+      tokens: 144
+      dim: 192
+      token_hidden: 96
+      channel_hidden: 768
+    input_constants: {}
+  ekb_l2_114_mobilenet_text_embedding:
+    parameters:
+      batch_size: 1
+      channels: 104
+      dim: 1104
+      mid_channels: 72
+      out_dim: 552
+      height: 104
+      width: 144
+      seq_len: 72
+    input_constants: {}
+  ekb_l2_117_nonlocal:
+    parameters:
+      batch_size: 1
+      channels: 48
+      inter_channels: 24
+      height: 24
+      width: 24
+    input_constants: {}
+  ekb_l2_121_postnorm_residual:
+    parameters:
+      batch_size: 1
+      seq_len: 144
+      dim: 864
+      hidden_dim: 992
+    input_constants: {}
+  ekb_l2_122_preact_residual:
+    parameters:
+      batch_size: 1
+      channels: 48
+      height: 48
+      width: 48
+    input_constants: {}
+  ekb_l2_126_replk_train:
+    parameters:
+      batch_size: 1
+      channels: 24
+      height: 32
+      width: 32
+    input_constants: {}
+  ekb_l2_130_resnet_stem:
+    parameters:
+      batch_size: 1
+      in_channels: 3
+      out_channels: 48
+      height: 160
+      width: 160
+    input_constants: {}
+  ekb_l2_134_rotary_position_block:
+    parameters:
+      batch_size: 1
+      seq_len: 72
+      heads: 8
+      head_dim: 138
+    input_constants: {}
+  ekb_l2_136_shufflenetv2_unit:
+    parameters:
+      batch_size: 1
+      channels: 48
+      out_channels: 80
+      height: 104
+      width: 144
+    input_constants: {}
+  ekb_l2_137_simam:
+    parameters:
+      batch_size: 1
+      channels: 48
+      height: 40
+      width: 40
+      e_lambda: 0.0001
+    input_constants: {}
+  ekb_l2_139_sliding_mask_gqa:
+    parameters:
+      batch_size: 1
+      seq: 80
+      dim: 192
+      q_heads: 6
+      kv_heads: 2
+      window: 24
+    input_constants: {}
+  ekb_l2_144_static_gqa_decode_attention:
+    parameters:
+      batch_size: 1
+      dim: 384
+      num_q_heads: 6
+      num_kv_heads: 2
+      head_dim: 64
+      cache_len: 96
+    input_constants:
+      get_inputs_001_c001: 0
+      get_inputs_001_c002: 1
+      get_inputs_001_c003: 1
+      get_inputs_001_c004: 1
+      get_inputs_001_c005: 1
+      get_inputs_001_c006: 1
+      get_inputs_001_c007: 1
+      get_inputs_001_c008: 1
+  ekb_l2_148_stride2_downsample:
+    parameters:
+      batch_size: 1
+      in_channels: 104
+      out_channels: 136
+      height: 88
+      width: 120
+    input_constants: {}
+  ekb_l2_149_super_resolution_kws_package:
+    parameters:
+      batch_size: 1
+      channels: 72
+      mid_channels: 48
+      out_channels: 88
+      out_dim: 472
+      height: 72
+      width: 104
+    input_constants:
+      get_inputs_001_c001: 1
+  ekb_l2_150_swiglu_ffn:
+    parameters:
+      batch_size: 1
+      seq_len: 192
+      dim: 944
+      hidden_dim: 704
+    input_constants: {}
+  ekb_l2_152_swiglu_vision_projection:
+    parameters:
+      batch_size: 1
+      channels: 80
+      dim: 944
+      hidden_dim: 992
+      out_dim: 472
+      height: 104
+      width: 144
+      seq_len: 168
+    input_constants: {}
+  ekb_l2_153_swin_patch_merge:
+    parameters:
+      batch_size: 1
+      height: 24
+      width: 24
+      dim: 96
+    input_constants: {}
+  ekb_l2_154_swin_window_attention:
+    parameters:
+      batch_size: 1
+      dim: 192
+      heads: 6
+      window_size: 7
+    input_constants: {}
+  ekb_l2_156_token_meanpool_linear:
+    parameters:
+      batch_size: 1
+      seq_len: 104
+      dim: 784
+      out_dim: 392
+    input_constants: {}
+  ekb_l2_158_unet_skip_unit:
+    parameters:
+      batch_size: 1
+      in_channels: 80
+      out_channels: 104
+      height: 104
+      width: 144
+    input_constants:
+      get_inputs_001_c001: 2
+      get_inputs_001_c002: 2
+      get_inputs_001_c003: 2
+  ekb_l2_160_vision_llm_preprocess:
+    parameters:
+      batch_size: 1
+      channels: 80
+      dim: 1032
+      mid_channels: 48
+      out_dim: 520
+      height: 88
+      width: 120
+      seq_len: 48
+    input_constants: {}
+  ekb_l3_001_conformer_encoder2:
+    parameters:
+      batch_size: 1
+      tokens: 96
+      dim: 192
+      heads: 6
+      hidden: 512
+      vocab: 256
+    input_constants: {}
+  ekb_l3_002_convnext_tiny_truncated:
+    parameters:
+      batch_size: 1
+      height: 160
+      width: 160
+      stem_channels: 48
+      stage2_channels: 96
+      num_classes: 64
+    input_constants:
+      get_inputs_001_c001: 3
+  ekb_l3_004_dense_moe_decoder:
+    parameters:
+      batch_size: 1
+      tokens: 80
+      dim: 192
+      heads: 6
+      hidden: 384
+      experts: 4
+    input_constants: {}
+  ekb_l3_006_ecbsr:
+    parameters:
+      batch_size: 1
+      height: 72
+      width: 88
+      channels: 32
+    input_constants:
+      get_inputs_001_c001: 3
+  ekb_l3_007_efficientnet_lite0:
+    parameters:
+      batch_size: 1
+      height: 160
+      width: 160
+      c1: 16
+      c2: 32
+      c3: 64
+      classes: 64
+    input_constants:
+      get_inputs_001_c001: 3
+  ekb_l3_008_espcn:
+    parameters:
+      batch_size: 1
+      channels: 1
+      height: 64
+      width: 72
+      c1: 64
+      c2: 64
+      c3: 32
+      scale: 2
+    input_constants: {}
+  ekb_l3_010_gpt2_mha_gelu_decode_block:
+    parameters: {}
+    input_constants:
+      get_init_inputs_001_c001: 384
+      get_init_inputs_001_c002: 1024
+      get_init_inputs_001_c003: 6
+      get_init_inputs_001_c004: 64
+      get_init_inputs_001_c005: 96
+      get_inputs_001_c001: 3204
+      get_inputs_001_c002: 1
+      get_inputs_001_c003: 384
+      get_inputs_001_c004: 6
+      get_inputs_001_c005: 64
+      get_inputs_001_c006: 96
+      get_inputs_001_c007: 1
+      get_inputs_001_c008: 1
+      get_inputs_001_c009: 1
+      get_inputs_001_c010: 1
+      get_inputs_001_c011: 97
+  ekb_l3_013_llama_decode_block_explicit_kv:
+    parameters: {}
+    input_constants:
+      get_init_inputs_001_c001: 384
+      get_init_inputs_001_c002: 1024
+      get_init_inputs_001_c003: 6
+      get_init_inputs_001_c004: 2
+      get_init_inputs_001_c005: 64
+      get_init_inputs_001_c006: 96
+      get_init_inputs_001_c007: 32
+      get_inputs_001_c001: 3201
+      get_inputs_001_c002: 1
+      get_inputs_001_c003: 384
+      get_inputs_001_c004: 2
+      get_inputs_001_c005: 64
+      get_inputs_001_c006: 96
+      get_inputs_001_c007: 1
+      get_inputs_001_c008: 1.0
+      get_inputs_001_c009: 10000.0
+      get_inputs_001_c010: 0
+      get_inputs_001_c011: 2
+      get_inputs_001_c012: 1
+      get_inputs_001_c013: 1
+      get_inputs_001_c014: 1
+      get_inputs_001_c015: 1
+      get_inputs_001_c016: 1
+      get_inputs_001_c017: 1
+      get_inputs_001_c018: 1
+      get_inputs_001_c019: 1
+      get_inputs_001_c020: 1
+      get_inputs_001_c021: 1
+      get_inputs_001_c022: 1
+      get_inputs_001_c023: 97
+  ekb_l3_015_minigpt_static:
+    parameters:
+      batch_size: 1
+      vocab: 4096
+      seq: 80
+      dim: 160
+      heads: 5
+    input_constants:
+      get_inputs_001_c001: 0
+  ekb_l3_016_mistral_sliding_decode_block_explicit_kv:
+    parameters: {}
+    input_constants:
+      get_init_inputs_001_c001: 384
+      get_init_inputs_001_c002: 1024
+      get_init_inputs_001_c003: 6
+      get_init_inputs_001_c004: 2
+      get_init_inputs_001_c005: 64
+      get_init_inputs_001_c006: 96
+      get_init_inputs_001_c007: 32
+      get_inputs_001_c001: 3202
+      get_inputs_001_c002: 1
+      get_inputs_001_c003: 384
+      get_inputs_001_c004: 2
+      get_inputs_001_c005: 64
+      get_inputs_001_c006: 96
+      get_inputs_001_c007: 1
+      get_inputs_001_c008: 1.0
+      get_inputs_001_c009: 10000.0
+      get_inputs_001_c010: 0
+      get_inputs_001_c011: 2
+      get_inputs_001_c012: 1
+      get_inputs_001_c013: 1
+      get_inputs_001_c014: 1
+      get_inputs_001_c015: 1
+      get_inputs_001_c016: 1
+      get_inputs_001_c017: 1
+      get_inputs_001_c018: 1
+      get_inputs_001_c019: 1
+      get_inputs_001_c020: 1
+      get_inputs_001_c021: 1
+      get_inputs_001_c022: 1
+      get_inputs_001_c023: 32
+  ekb_l3_020_mobilenetv2:
+    parameters:
+      batch_size: 1
+      channels: 72
+      height: 72
+      width: 104
+      num_classes: 62
+    input_constants: {}
+  ekb_l3_025_phi3_fused_qkv_decode_block:
+    parameters: {}
+    input_constants:
+      get_init_inputs_001_c001: 384
+      get_init_inputs_001_c002: 1024
+      get_init_inputs_001_c003: 6
+      get_init_inputs_001_c004: 2
+      get_init_inputs_001_c005: 64
+      get_init_inputs_001_c006: 96
+      get_init_inputs_001_c007: 32
+      get_inputs_001_c001: 3205
+      get_inputs_001_c002: 1
+      get_inputs_001_c003: 384
+      get_inputs_001_c004: 2
+      get_inputs_001_c005: 64
+      get_inputs_001_c006: 96
+      get_inputs_001_c007: 1
+      get_inputs_001_c008: 1.0
+      get_inputs_001_c009: 10000.0
+      get_inputs_001_c010: 0
+      get_inputs_001_c011: 2
+      get_inputs_001_c012: 1
+      get_inputs_001_c013: 1
+      get_inputs_001_c014: 1
+      get_inputs_001_c015: 1
+      get_inputs_001_c016: 1
+      get_inputs_001_c017: 1
+      get_inputs_001_c018: 1
+      get_inputs_001_c019: 1
+      get_inputs_001_c020: 1
+      get_inputs_001_c021: 1
+      get_inputs_001_c022: 1
+      get_inputs_001_c023: 97
+  ekb_l3_029_qwen2_biased_qkv_decode_block:
+    parameters: {}
+    input_constants:
+      get_init_inputs_001_c001: 384
+      get_init_inputs_001_c002: 1024
+      get_init_inputs_001_c003: 6
+      get_init_inputs_001_c004: 2
+      get_init_inputs_001_c005: 64
+      get_init_inputs_001_c006: 96
+      get_init_inputs_001_c007: 32
+      get_inputs_001_c001: 3203
+      get_inputs_001_c002: 1
+      get_inputs_001_c003: 384
+      get_inputs_001_c004: 2
+      get_inputs_001_c005: 64
+      get_inputs_001_c006: 96
+      get_inputs_001_c007: 1
+      get_inputs_001_c008: 1.0
+      get_inputs_001_c009: 10000.0
+      get_inputs_001_c010: 0
+      get_inputs_001_c011: 2
+      get_inputs_001_c012: 1
+      get_inputs_001_c013: 1
+      get_inputs_001_c014: 1
+      get_inputs_001_c015: 1
+      get_inputs_001_c016: 1
+      get_inputs_001_c017: 1
+      get_inputs_001_c018: 1
+      get_inputs_001_c019: 1
+      get_inputs_001_c020: 1
+      get_inputs_001_c021: 1
+      get_inputs_001_c022: 1
+      get_inputs_001_c023: 97
+  ekb_l3_030_regnetx_400mf:
+    parameters:
+      batch_size: 1
+      height: 160
+      width: 160
+      stem_channels: 24
+      stage1_channels: 48
+      stage2_channels: 96
+      groups: 8
+      num_classes: 64
+    input_constants:
+      get_inputs_001_c001: 3
+  ekb_l3_031_resnet18:
+    parameters:
+      batch_size: 1
+      channels: 48
+      height: 56
+      width: 72
+      num_classes: 57
+    input_constants: {}
+  ekb_l3_033_shufflenetv2_05:
+    parameters:
+      batch_size: 1
+      height: 160
+      width: 160
+      c1: 16
+      c2: 32
+      c3: 64
+      classes: 64
+    input_constants:
+      get_inputs_001_c001: 3
+  ekb_l3_034_squeezenet11:
+    parameters:
+      batch_size: 1
+      height: 160
+      width: 160
+      stem: 32
+      squeeze: 12
+      expand: 24
+      classes: 64
+    input_constants:
+      get_inputs_001_c001: 3
+  ekb_l3_037_tinyllama_decoder2:
+    parameters:
+      batch_size: 1
+      seq: 512
+      dim: 256
+      q_heads: 8
+      kv_heads: 2
+      hidden: 704
+    input_constants: {}
+  ekb_l3_039_transformer_encoder4:
+    parameters:
+      batch_size: 1
+      tokens: 128
+      dim: 160
+      heads: 5
+    input_constants: {}
+  ekb_l3_040_unet_small:
+    parameters:
+      batch_size: 1
+      height: 128
+      width: 160
+      c1: 16
+      c2: 32
+      c3: 64
+      classes: 8
+    input_constants:
+      get_inputs_001_c001: 3

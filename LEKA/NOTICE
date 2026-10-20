@@ -1,0 +1,7 @@
+EdgeKernelBench — LEKA
+Copyright 2026 the EdgeKernelBench contributors.
+
+This package contains LEKA, licensed under the Apache License, Version 2.0.
+Benchmark task templates and the TVM patch are distributed separately in the
+project repository under their applicable terms and are not included in this
+package.

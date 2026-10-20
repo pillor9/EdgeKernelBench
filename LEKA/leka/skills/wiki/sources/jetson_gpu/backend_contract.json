@@ -1,0 +1,24 @@
+{
+  "schema_version": "leka.wiki_backend_contract.v1",
+  "backend": "jetson_gpu",
+  "target": "cuda -arch=sm_87",
+  "device_family": "NVIDIA Jetson AGX Orin",
+  "planning_limits": {
+    "warp_size": 32,
+    "max_threads_per_block": 1024,
+    "max_block_dimensions": [
+      1024,
+      1024,
+      64
+    ],
+    "max_registers_per_block": 65536,
+    "max_shared_memory_per_block_bytes": 49152
+  },
+  "boundary": "Use these conservative planning limits together with the active compiler target and runtime limits. Larger shared-memory allocations require an explicit CUDA opt-in path and compatible host compilation.",
+  "runtime_queries": [
+    "device identity and compute capability",
+    "available memory and resource limits",
+    "CUDA compiler and runtime versions",
+    "power and clock state"
+  ]
+}

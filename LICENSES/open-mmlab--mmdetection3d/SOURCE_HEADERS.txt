@@ -1,0 +1,10 @@
+Source notices reproduced from the reviewed upstream revision.
+These notices apply to the upstream material they identify.
+
+Source: https://github.com/open-mmlab/mmdetection3d/blob/fe25f7a51d36e3702f961e198894580d83c4387b/mmdet3d/models/dense_heads/centerpoint_head.py
+
+# Copyright (c) OpenMMLab. All rights reserved.
+
+Source: https://github.com/open-mmlab/mmdetection3d/blob/fe25f7a51d36e3702f961e198894580d83c4387b/mmdet3d/models/voxel_encoders/pillar_encoder.py
+
+# Copyright (c) OpenMMLab. All rights reserved.

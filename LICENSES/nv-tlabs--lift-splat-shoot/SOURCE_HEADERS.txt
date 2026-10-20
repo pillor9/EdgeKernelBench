@@ -1,0 +1,10 @@
+Notices retained from the source copies used to create the task templates.
+The review revision in sources.json is not claimed as the original import revision.
+
+Source copy SHA256: 446e68848534bb2c262392cc11de7159647ddf2f96065806749409fb2016397a
+
+"""
+Copyright (C) 2020 NVIDIA Corporation.  All rights reserved.
+Licensed under the NVIDIA Source Code License. See LICENSE at https://github.com/nv-tlabs/lift-splat-shoot.
+Authors: Jonah Philion and Sanja Fidler
+"""

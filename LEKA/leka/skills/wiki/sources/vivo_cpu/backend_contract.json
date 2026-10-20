@@ -1,0 +1,22 @@
+{
+  "schema_version": "leka.wiki_backend_contract.v1",
+  "backend": "vivo_cpu",
+  "target": "llvm -keys=arm_cpu,cpu -mcpu=generic -mtriple=aarch64-linux-android -num-cores=8",
+  "device_family": "Qualcomm Snapdragon 8 Gen 3 Android CPU",
+  "mcpu": "generic",
+  "mattr": null,
+  "runtime_num_threads": 8,
+  "runtime_affinity_mode": 1,
+  "runtime_policy_id": "vivo_cpu_8threads_affinity_mode1_v1",
+  "runtime_setup": "runtime.config_threadpool(1, 8)",
+  "runtime_check": "runtime.NumThreads() == 8",
+  "boundary": "Mode 1 is kBig in the inspected local TVM source; target runtime ABI correspondence is not verified by the worker. Eight requested threads and NumThreads do not prove big-only or all-core execution, CPU utilization, equal core capacity, fixed frequency, or stable affinity. Optional hardware features do not widen the generic compiler target.",
+  "legacy_replay": "Saved jobs lacking runtime_affinity_mode retain mode 0. An explicit integer 0 is accepted for legacy reproduction, and is labeled separately from mode 1. Candidates cannot alter evaluator policy.",
+  "runtime_queries": [
+    "online and allowed CPUs",
+    "worker thread count",
+    "affinity and frequency",
+    "thermal state",
+    "cache topology when available"
+  ]
+}

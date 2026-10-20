@@ -1,0 +1,26 @@
+{
+  "schema_version": "leka.wiki_tvm_compatibility.v1",
+  "tvm_version": "0.23.0",
+  "upstream_commit": "75ce1b4d46053b28fa926a6e29aa715b2463dc92",
+  "scope": "TVMScript syntax and compiler compatibility reference.",
+  "candidate_dialect": {
+    "module": "from tvm.script import ir as I",
+    "tir": "from tvm.script import tir as T",
+    "relax": "from tvm.script import relax as R",
+    "module_form": "one @I.ir_module with private functions",
+    "version_constraints": [
+      "Use T.block rather than T.sblock.",
+      "Use R.call_tir(..., out_sinfo=...).",
+      "Use R.prim_value rather than R.PrimValue.",
+      "Do not import tvm.script.tirx or tvm.s_tir."
+    ],
+    "complete_candidate_requires_imports": true,
+    "reference_snippets_may_omit_imports": true
+  },
+  "authority_order": [
+    "current task semantics and backend contract",
+    "configured compiler parser, validator and target build",
+    "version-pinned upstream source",
+    "online documentation only when compatible with the pinned source"
+  ]
+}

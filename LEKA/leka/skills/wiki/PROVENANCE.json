@@ -1,0 +1,227 @@
+{
+  "schema_version": "leka.wiki_provenance.v1",
+  "claim_reference_syntax": "Source IDs in square brackets resolve to this registry. Package locators are relative to the Wiki root.",
+  "sources": {
+    "arm-g610-counters": {
+      "kind": "official_doc",
+      "locator": "https://documentation-service.arm.com/static/64d494774a92140bb31d7ae5",
+      "revision": "102812_0105_en"
+    },
+    "arm-libgpucounters": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/ARM-software/libGPUCounters"
+    },
+    "arm-malioc": {
+      "kind": "official_tool_doc",
+      "locator": "https://developer.arm.com/tools-and-software/mali-offline-compiler"
+    },
+    "arm-neon": {
+      "kind": "official_doc",
+      "locator": "https://developer.arm.com/Architectures/Neon"
+    },
+    "arm-opencl-guide": {
+      "kind": "official_doc",
+      "locator": "https://developer.arm.com/-/media/developer/Graphics%20and%20Multimedia/Developer%20Guides%20-%20PDFs/Arm%20Guide%20to%20OpenCL%20Programming.pdf"
+    },
+    "arm-performance-studio": {
+      "kind": "official_tool_doc",
+      "locator": "https://developer.arm.com/Tools%20and%20Software/Arm%20Performance%20Studio"
+    },
+    "leka-jetson-contract": {
+      "kind": "package_contract",
+      "author": "LEKA",
+      "locator": "sources/jetson_gpu/backend_contract.json",
+      "sha256": "95907656a4f7d4683486d514cc457096f6401271b308f9e62e405fb552b6b7c9",
+      "scope": "Backend configuration, planning limits and runtime checks."
+    },
+    "leka-rk3588-contract": {
+      "kind": "package_contract",
+      "author": "LEKA",
+      "locator": "sources/rk3588_gpu/backend_contract.json",
+      "sha256": "2b5ae62961c70644a0a7372592bbf67428b45f4b4aea0065cdfbc780a02d896e",
+      "scope": "Backend configuration, planning limits and runtime checks."
+    },
+    "leka-vivo-contract": {
+      "kind": "package_contract",
+      "author": "LEKA",
+      "locator": "sources/vivo_cpu/backend_contract.json",
+      "sha256": "edf49e0f0523069f93d29d3e1c9f5e56824526031a682fe4f168f3b2f827f59c",
+      "scope": "Backend configuration, planning limits and runtime checks."
+    },
+    "llvm-language-reference": {
+      "kind": "official_doc",
+      "author": "LLVM Project",
+      "locator": "https://llvm.org/docs/LangRef.html"
+    },
+    "nvidia-ampere-tuning": {
+      "kind": "official_doc",
+      "author": "NVIDIA",
+      "locator": "https://docs.nvidia.com/cuda/archive/12.6.0/ampere-tuning-guide/index.html",
+      "revision": "CUDA 12.6.0"
+    },
+    "nvidia-cuda-best-practices": {
+      "kind": "official_doc",
+      "locator": "https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/"
+    },
+    "nvidia-cuda-cc": {
+      "kind": "official_doc",
+      "locator": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/compute-capabilities.html"
+    },
+    "nvidia-cutlass-gemm": {
+      "kind": "official_doc",
+      "author": "NVIDIA",
+      "locator": "https://docs.nvidia.com/cutlass/latest/media/docs/cpp/efficient_gemm.html"
+    },
+    "nvidia-orin-reviewer-guide": {
+      "kind": "official_doc",
+      "locator": "https://developer.nvidia.com/sites/default/files/akamai/Jetson_AGX_Orin_Developer_Kit_RG_0.pdf",
+      "revision": "developer-kit-reviewer-guide"
+    },
+    "nvidia-orin-tech-brief": {
+      "kind": "official_doc",
+      "locator": "https://www.nvidia.com/content/dam/en-zz/Solutions/gtcf21/jetson-orin/nvidia-jetson-agx-orin-technical-brief.pdf",
+      "revision": "Jetson-AGX-Orin-technical-brief"
+    },
+    "qualcomm-sm8650": {
+      "kind": "official_doc",
+      "locator": "https://www.qualcomm.com/smartphones/products/8-series/snapdragon-8-gen-3-mobile-platform"
+    },
+    "rockchip-rk3588-brief": {
+      "kind": "official_doc",
+      "locator": "https://www.rock-chips.com/uploads/pdf/2022.8.26/191/RK3588%20Brief%20Datasheet.pdf",
+      "revision": "RK3588-brief-datasheet"
+    },
+    "tvm-023-adreno-relax": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/tree/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/relax/backend/adreno",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-arm-intrin": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/tir/tensor_intrin/arm_cpu.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-arm-target-tests": {
+      "kind": "upstream_test",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/tests/python/meta_schedule/test_meta_schedule_post_order_apply.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-call-tir": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/relax/op/base.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-call-tir-rewrite": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/src/relax/transform/call_tir_rewrite.cc",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-cuda-codegen": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/src/target/source/codegen_cuda.cc",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-cuda-intrin": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/tir/tensor_intrin/cuda.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-opencl-codegen": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/src/target/source/codegen_opencl.cc",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-relax-builder": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/script/ir_builder/relax/ir.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-release": {
+      "kind": "upstream_release",
+      "locator": "https://github.com/apache/tvm/releases/tag/v0.23.0",
+      "revision": "v0.23.0 / 75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-roundtrip": {
+      "kind": "upstream_test",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/tests/python/tvmscript/test_tvmscript_roundtrip.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-tir-builder": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/script/ir_builder/tir/ir.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-tir-parser": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/script/parser/tir/entry.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-tir-tutorial": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/docs/deep_dive/tensor_ir/tutorials/tir_creation.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-023-verify-memory": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/src/tir/analysis/verify_memory.cc",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-compatibility": {
+      "kind": "package_contract",
+      "author": "LEKA",
+      "locator": "sources/tvm_compatibility.json",
+      "sha256": "7cc691d5475956e7a551630cb2d04e0b04e917626e1d1bc5ac998a4972e62a07",
+      "scope": "TVMScript syntax and compiler compatibility."
+    },
+    "tvm-dlight-adreno": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/tree/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/dlight/adreno",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-dlight-cpu-gemv": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/dlight/cpu/gemv.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-dlight-cuda-matmul": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/dlight/gpu/matmul.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-dlight-gpu-gemv": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/dlight/gpu/gemv.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-dlight-gpu-matmul": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/dlight/gpu/matmul.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-dlight-gpu-reduction": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/dlight/gpu/general_reduction.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-dlight-gpu-transpose": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/dlight/gpu/transpose.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-dlight-mali-gemv": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/dlight/gpu/gemv.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-dlight-mali-low-batch-gemv": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/dlight/gpu/low_batch_gemv.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    },
+    "tvm-dlight-opencl-matmul": {
+      "kind": "upstream_code",
+      "locator": "https://github.com/apache/tvm/blob/75ce1b4d46053b28fa926a6e29aa715b2463dc92/python/tvm/dlight/gpu/matmul.py",
+      "revision": "75ce1b4d46053b28fa926a6e29aa715b2463dc92"
+    }
+  }
+}

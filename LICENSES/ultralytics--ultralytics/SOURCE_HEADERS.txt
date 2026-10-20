@@ -1,0 +1,14 @@
+Notices retained from the source copies used to create the task templates.
+The review revision in sources.json is not claimed as the original import revision.
+
+Source copy SHA256: 20eda06be7ad7fea69db8161c91f6681371aa6aedb1dcae18db1a004783e1cbd
+
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
+Source copy SHA256: c802f36ea1596d8910f2b651d57877b50a4960857b97cbb5a20d44a1dbbaa774
+
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
+Source copy SHA256: 5701116d86881827ac9e1e7462dfaa44c33937bd68e23324763459685729e06f
+
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
